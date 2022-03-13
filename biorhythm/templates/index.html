@@ -1,4 +1,9 @@
 {% extends 'layout.html' %} {% block content %}
+
+<script>
+  let createdEvents = {{createdEvents|tojson}};
+</script>
+
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
   <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -149,7 +154,7 @@
       <div
         class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
       >
-        <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+        <h6 class="m-0 font-weight-bold text-primary">My Events</h6>
         <div class="dropdown no-arrow">
           <a
             class="dropdown-toggle"
@@ -174,22 +179,20 @@
           </div>
         </div>
       </div>
+
       <!-- Card Body -->
       <div class="card-body">
-        <div class="chart-pie pt-4 pb-2">
-          <canvas id="myPieChart"></canvas>
-        </div>
-        <div class="mt-4 text-center small">
-          <span class="mr-2">
-            <i class="fas fa-circle text-primary"></i> Direct
-          </span>
-          <span class="mr-2">
-            <i class="fas fa-circle text-success"></i> Social
-          </span>
-          <span class="mr-2">
-            <i class="fas fa-circle text-info"></i> Referral
-          </span>
-        </div>
+        <div class="list-group">
+          {% for event in createdEvents %}
+          <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{ event["title"] }}</h5>
+              <small>3 days ago</small>
+            </div>
+            <p class="mb-1">{{ event["description"] }}</p>
+          </a>
+          {% endfor %}
+        </ul>
       </div>
     </div>
   </div>
