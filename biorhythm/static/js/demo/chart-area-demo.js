@@ -42,7 +42,6 @@ const getDateAxis = function () {
 };
 
 // Area Chart Example
-console.log(biorhythm);
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: "line",
