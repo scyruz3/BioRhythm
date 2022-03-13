@@ -29,7 +29,7 @@
             </div>
           </div>
           <div class="col-auto">
-            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+            <i class="fas fa-dumbbell fa-2x text-gray-300"></i>
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@
             </div>
           </div>
           <div class="col-auto">
-            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+            <i class="fas fa-heart fa-2x text-gray-300"></i>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
             </div>
           </div>
           <div class="col-auto">
-            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+            <i class="fas fa-brain fa-2x text-gray-300"></i>
           </div>
         </div>
       </div>
@@ -185,7 +185,7 @@
           {% for event in createdEvents %}
           <a
             href="#"
-            class="list-group-item list-group-item-action"
+            class="list-group-item list-group-item-action {% if event.biorhythmType == "physical"%} border-left-primary {%elif event.biorhythmType == "emotional"%}border-left-success {%elif event.biorhythmType == "intellectual"%}border-left-info{%endif%}"
             aria-current="true"
           >
             <div class="d-flex w-100 justify-content-between">

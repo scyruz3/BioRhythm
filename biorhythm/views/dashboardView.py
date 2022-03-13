@@ -13,8 +13,8 @@ def redirect_dashboard():
 def get_dashboard():
     biorhythm = biorhythmManager.getBioRhythm("622d0e529523a13ef2ad42f8")
     createdEvents = eventManager.getEventsCreatedByUser("622d0e529523a13ef2ad42f8")
-    confirmedEvents = []
-    pendingEvents = []
+    confirmedEvents = eventManager.getConfirmedEventsByUser("622d0e529523a13ef2ad42f8")
+    pendingEvents = eventManager.getPendingEventsByUser("622d0e529523a13ef2ad42f8")
     # session["userId"] = 1234
     return render_template(
         "index.html",
