@@ -8,6 +8,11 @@ def getEventsCreatedByUser(userId: ObjectId) -> List[dict]:
     return createdEvents
 
 
-def getConfirmedEventsByUser(userId: ObjectId) -> List[dist]:
+def getConfirmedEventsByUser(userId: ObjectId) -> List[dict]:
     confirmedEvents = eventDAO.getConfirmedEventsByUser(userId=userId)
     return confirmedEvents
+
+
+def getPendingEventsByUser(userId: ObjectId) -> List[dict]:
+    pendingEvents = eventDAO.getPendingEventsByUser(userId=userId)
+    return pendingEvents
