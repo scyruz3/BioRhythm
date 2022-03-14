@@ -1,9 +1,10 @@
 {% extends 'layout.html' %} {% block content %}
 
+
 <script>
-  let createdEvents = {{createdEvents|tojson}};
-  let confirmedEvents = {{confirmedEvents|tojson}};
-  let pendingEvents = {{pendingEvents|tojson}};
+  let createdEvents = {{ createdEvents| tojson}};
+  let confirmedEvents = {{ confirmedEvents| tojson}};
+  let pendingEvents = {{ pendingEvents| tojson}};
 </script>
 
 <!-- Page Heading -->
@@ -19,9 +20,7 @@
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div
-              class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-            >
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
               Physical (Today)
             </div>
             <div class="h5 mb-0 font-weight-bold text-gray-800">
@@ -42,9 +41,7 @@
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div
-              class="text-xs font-weight-bold text-success text-uppercase mb-1"
-            >
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
               Emotional (Today)
             </div>
             <div class="h5 mb-0 font-weight-bold text-gray-800">
@@ -86,9 +83,7 @@
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div
-              class="text-xs font-weight-bold text-warning text-uppercase mb-1"
-            >
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
               Pending Requests
             </div>
             <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
@@ -109,26 +104,14 @@
   <div class="col-xl-8 col-lg-7 mb-4">
     <div class="card shadow mb-4">
       <!-- Card Header - Dropdown -->
-      <div
-        class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-      >
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">BioRhythm Overview</h6>
         <div class="dropdown no-arrow">
-          <a
-            class="dropdown-toggle"
-            href="#"
-            role="button"
-            id="dropdownMenuLink"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
           </a>
-          <div
-            class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-            aria-labelledby="dropdownMenuLink"
-          >
+          <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
             <div class="dropdown-header">Dropdown Header:</div>
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
@@ -150,26 +133,14 @@
   <div class="col-xl-4 col-lg-5 mb-4">
     <div class="card shadow mb-4">
       <!-- Card Header - Dropdown -->
-      <div
-        class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-      >
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">My Events</h6>
         <div class="dropdown no-arrow">
-          <a
-            class="dropdown-toggle"
-            href="#"
-            role="button"
-            id="dropdownMenuLink"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
           </a>
-          <div
-            class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-            aria-labelledby="dropdownMenuLink"
-          >
+          <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
             <div class="dropdown-header">Dropdown Header:</div>
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
@@ -183,11 +154,9 @@
       <div class="card-body">
         <div class="list-group">
           {% for event in createdEvents %}
-          <a
-            href="#"
-            class="list-group-item list-group-item-action {% if event.biorhythmType == "physical"%} border-left-primary {%elif event.biorhythmType == "emotional"%}border-left-success {%elif event.biorhythmType == "intellectual"%}border-left-info{%endif%}"
-            aria-current="true"
-          >
+          <a href="#" class="list-group-item list-group-item-action {% if event.biorhythmType == " physical"%}
+            border-left-primary {%elif event.biorhythmType=="emotional" %}border-left-success {%elif
+            event.biorhythmType=="intellectual" %}border-left-info{%endif%}" aria-current="true">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">{{ event["title"] }}</h5>
               <small>3 days ago</small>
@@ -210,26 +179,14 @@
     <!-- Project Card Example -->
     <div class="card shadow mb-4">
       <!-- Card Header - Dropdown -->
-      <div
-        class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-      >
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">Confirmed Events</h6>
         <div class="dropdown no-arrow">
-          <a
-            class="dropdown-toggle"
-            href="#"
-            role="button"
-            id="dropdownMenuLink"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
           </a>
-          <div
-            class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-            aria-labelledby="dropdownMenuLink"
-          >
+          <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
             <div class="dropdown-header">Dropdown Header:</div>
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
@@ -252,11 +209,7 @@
         {% else %}
         <div class="list-group">
           {% for event in confirmedEvents %}
-          <a
-            href="#"
-            class="list-group-item list-group-item-action"
-            aria-current="true"
-          >
+          <a href="#" class="list-group-item list-group-item-action" aria-current="true">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">{{ event["title"] }}</h5>
               <small>3 days ago</small>
@@ -273,26 +226,14 @@
     <!-- Pending Events -->
     <div class="card shadow mb-4">
       <!-- Card Header - Dropdown -->
-      <div
-        class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-      >
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">Pending Events</h6>
         <div class="dropdown no-arrow">
-          <a
-            class="dropdown-toggle"
-            href="#"
-            role="button"
-            id="dropdownMenuLink"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
           </a>
-          <div
-            class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-            aria-labelledby="dropdownMenuLink"
-          >
+          <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
             <div class="dropdown-header">Dropdown Header:</div>
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
@@ -315,11 +256,7 @@
         {% else %}
         <div class="list-group">
           {% for event in pendingEvents %}
-          <a
-            href="#"
-            class="list-group-item list-group-item-action"
-            aria-current="true"
-          >
+          <a href="#" class="list-group-item list-group-item-action" aria-current="true">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">{{ event["title"] }}</h5>
               <small>3 days ago</small>
