@@ -13,4 +13,3 @@ build/
 *.swp
 *~
 .env
-.DS_Store
