@@ -1,0 +1,95 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>Invite Friends</title>
+<!-- Custom fonts for this template -->
+<link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+  rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="static/css/sb-admin-2.min.css" rel="stylesheet">
+
+<!-- Custom styles for this page -->
+<link href="static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+{% endblock %}
+
+<!-- global JS variables from flask-->
+<script>
+  let biorhythm = {{ biorhythm | tojson}}
+</script>
+
+
+<!-- Begin Page Content -->
+<c class="container-fluid">
+  {% block content %}
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Invite friends to your event!</h1>
+  <p></p>
+
+  <!--Friends Cards-->
+  <div class="row align-items-center">
+
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-info shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-lg font-weight-bold text-info text-uppercase mb-1">
+                Rodrigo Maldonado
+              </div>
+            </div>
+            <div class="col-auto">
+              <a href="#" class="btn btn-success btn-circle btn-lg">
+                <i class="fas fa-check"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card border-left-info shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-lg font-weight-bold text-info text-uppercase mb-1">
+                Priscila Ruiz
+              </div>
+            </div>
+            <div class="col-auto">
+              <a href="#" class="btn btn-success btn-circle btn-lg">
+                <i class="fas fa-check"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card border-left-info shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-lg font-weight-bold text-info text-uppercase mb-1">
+                Fernanda LopezVelarde
+              </div>
+            </div>
+            <div class="col-auto">
+              <a href="#" class="btn btn-success btn-circle btn-lg">
+                <i class="fas fa-check"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Invite All Friends to Event-->
+    <div class="my-2"></div>
+    <a href="#" class="btn btn-info btn-icon-split btn-lg">
+      <span class="text">Invite All</span>
+    </a>
+  </div>
+
+  <!-- /.container-fluid -->
+  {% endblock content%}
+  </div>
+  <!-- End of Main Content -->
