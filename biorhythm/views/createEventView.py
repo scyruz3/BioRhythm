@@ -2,8 +2,6 @@ from crypt import methods
 from biorhythm import app
 from flask import redirect, render_template, session
 from biorhythm.manager import biorhythmManager, eventManager
-from flask_bootstrap import Bootstrap
-from flask_datepicker import datepicker
 
 @app.route("/newEvent")
 def get_newEvent(id=".datepicker", # identifier will be passed to Jquery to select element
