@@ -363,139 +363,150 @@
           <p />
 
           <!-- Name INput -->
-          <div class="flex-column">
-            <p class="text-lg mb-0">Name of Event</p>
-            <form class="verticalform">
-              <input type="text" class="form-control" />
-            </form>
-            <p />
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-4 m-4">
+              <p class="text-lg mb-0">Name of Event</p>
+              <form class="verticalform">
+                <input type="text" class="form-control" />
+              </form>
+              <p />
 
-            <!-- Date Picker -->
-            <p class="text-lg mb-0">Date</p>
-            {% block scripts %}
-            {{ super() }}
-            {{ datepicker.loader() }} {# to load jQuery-ui #}
-            {{ datepicker.picker(id=".dp") }}
-            {% endblock %}
-            <form class="verticalform">
-              <input type="text" class="form-control dp" />
-            </form>
-            <p />
+              <!-- Date Picker -->
+              <p class="text-lg mb-0">Date</p>
+              {% block scripts %}
+              {{ super() }}
+              {{ datepicker.loader() }} {# to load jQuery-ui #}
+              {{ datepicker.picker(id=".dp") }}
+              {% endblock %}
+              <form class="verticalform">
+                <input type="text" class="form-control dp" />
+              </form>
+              <p />
 
-            <!-- Hours Dropdown-->
-            <p class="text-lg mb-0">Hour</p>
-            <form class="verticalform">
-              <input type="text" class="form-control" placeholder="Example: 17:30, 20:15" />
-            </form>
-            <p />
-            <p />
-          </div>
+              <!-- Hours Dropdown-->
+              <p class="text-lg mb-0">Hour</p>
+              <form class="verticalform">
+                <input type="text" class="form-control" placeholder="Example: 17:30, 20:15" />
+              </form>
+              <p />
+              <p />
+            </div>
 
-          <!--Friends Invited Cards-->
-          <p class="text-lg mb-0">Friends Invited</p>
-          <div class="card border-left-warning shadow h-100 py-2">
-            <div class="card-body">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                  <div class="font-weight-bold text-warning text-uppercase mb-1">
-                    Rodrigo Maldonado
+            <!--Friends Invited Cards-->
+            <div class="col-lg-6 m4">
+              <p class="text-lg mb-2 text-center">Friends Invited</p>
+              <div class="col-xl-12 col-md-6 mb-1">
+                <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="font-weight-bold text-warning text-uppercase mb-1">
+                          Rodrigo Maldonado
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <a href="#" class="btn btn-danger btn-circle">
+                          <i class="fas fa-trash"></i>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="col-auto">
-                  <a href="#" class="btn btn-danger btn-circle">
-                    <i class="fas fa-trash"></i>
-                  </a>
+              </div>
+              <div class="col-xl-12 col-md-6 mb-1">
+                <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="font-weight-bold text-warning text-uppercase mb-1">
+                          Priscila Ruiz
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <a href="#" class="btn btn-danger btn-circle">
+                          <i class="fas fa-trash"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12 col-md-6 mb-1">
+                <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="font-weight-bold text-warning text-uppercase mb-1">
+                          Fernanda LopezVelarde
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <a href="#" class="btn btn-danger btn-circle">
+                          <i class="fas fa-trash"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="card border-left-warning shadow h-100 py-2">
-            <div class="card-body">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                  <div class="font-weight-bold text-warning text-uppercase mb-1">
-                    Priscila Ruiz
-                  </div>
-                </div>
-                <div class="col-auto">
-                  <a href="#" class="btn btn-danger btn-circle">
-                    <i class="fas fa-trash"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card border-left-warning shadow h-100 py-2">
-            <div class="card-body">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                  <div class="font-weight-bold text-warning text-uppercase mb-1">
-                    Fernanda LopezVelarde
-                  </div>
-                </div>
-                <div class="col-auto">
-                  <a href="#" class="btn btn-danger btn-circle">
-                    <i class="fas fa-trash"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+        </div>
 
-          <!--Modify Event Button-->
-          <div class="my-2"></div>
-          <a href="/inviteFriends" class="btn btn-success btn-icon-split btn-lg">
+        <!--Modify Event Button-->
+        <div class="row justify-content-center m-4">
+          <a href="/inviteFriends" class="btn btn-success btn-icon-split btn-lg m-4">
             <span class="icon text-white-50">
               <i class="fas fa-check"></i>
             </span>
             <span class="text">Modify Event</span>
           </a>
-
-          {% endblock %}
-          <!-- End of Main Content -->
-
-          <!-- Footer -->
-          <footer class="sticky-footer bg-white">
-            {% block footer %}
-            <div class="container my-auto">
-              <div class="copyright text-center my-auto">
-                <span>Copyright &copy; BioRhythm 2022</span>
-              </div>
-            </div>
-            {% endblock %}
-          </footer>
-          <!-- End of Footer -->
         </div>
-        <!-- End of Content Wrapper -->
+        {% endblock %}
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+          {% block footer %}
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright &copy; BioRhythm 2022</span>
+            </div>
+          </div>
+          {% endblock %}
+        </footer>
+        <!-- End of Footer -->
       </div>
-      <!-- End of Page Wrapper -->
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
 
-      <!-- Scroll to Top Button-->
-      <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-      </a>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
 
-      <!-- Logout Modal-->
-      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Select "Logout" below if you are ready to end your current session.
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary" type="button" data-dismiss="modal">
-                Cancel
-              </button>
-              <a class="btn btn-primary" href="login.html">Logout</a>
-            </div>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Select "Logout" below if you are ready to end your current session.
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">
+              Cancel
+            </button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
           </div>
         </div>
       </div>
+    </div>
 </body>
