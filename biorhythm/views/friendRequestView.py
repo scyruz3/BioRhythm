@@ -1,10 +1,11 @@
+from operator import methodcaller
 from os import stat
 from biorhythm import app
-from biorhythm.manager import friendManager
+from biorhythm.manager import friendManager, userManager
 from flask import request, Response
 
 
-@app.route("/user/<userID>/friend-requests", method=["POST"])
+@app.route("/users/<userID>/friend-requests", methods=["POST"])
 def post_friend_invite(userID):
     friendID = request.json.get('friendID')
 
