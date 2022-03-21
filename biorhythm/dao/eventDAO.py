@@ -23,3 +23,16 @@ def getPendingEventsByUser(userId: ObjectId) -> List[dict]:
     query = {"invitedUsers": str(userId)}
     pendingEvents = json.loads(json_util.dumps(db.Events.find(query)))
     return pendingEvents
+
+def postNewEvent(event) -> bool:
+    db.Events.insert_one({
+        'creator': event['creator'], 
+        'title': event['title'], 
+        'description': event['description'], 
+        'biorhythmType':event['biorhythmType'],
+        'confirmedUsers': [],
+        'eventDate': event['eventDate'],
+        'invitedUsers': event['invitedUsers']
+        })
+        
+    return 0
