@@ -62,11 +62,10 @@ def getBioRhythmTypeForEvent(userId: string, eventDate: datetime.datetime) -> st
     print(user)
 
     eventDate = datetime.datetime.strptime(eventDate, '%Y-%m-%d')
-    ed = datetime.datetime.combine(eventDate, datetime.datetime.min.time())
 
-    physical = getPhysicalBioRhythm((ed - user["birthdate"]).days)
-    emotional = getEmotionalBioRhythm((ed - user["birthdate"]).days)
-    intellectual = getIntellectualBioRhythm((ed - user["birthdate"]).days)
+    physical = getPhysicalBioRhythm((eventDate - user["birthdate"]).days)
+    emotional = getEmotionalBioRhythm((eventDate - user["birthdate"]).days)
+    intellectual = getIntellectualBioRhythm((eventDate - user["birthdate"]).days)
     
     types = [physical, emotional, intellectual]
 
@@ -74,7 +73,7 @@ def getBioRhythmTypeForEvent(userId: string, eventDate: datetime.datetime) -> st
     for type in types:
         if type > biorhythmType:
             biorhythmType = type
-
+    print(biorhythmType)
     if (biorhythmType == physical):
         return 'physical'
     elif (biorhythmType == emotional):
