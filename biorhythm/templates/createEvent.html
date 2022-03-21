@@ -362,49 +362,44 @@
           <h1 class="h3 mb-4 text-gray-800">PREPARE YOUR EVENT</h1>
           <p />
 
-          <!-- Name INput -->
-          <div class="row align-items-center justify-content-center">
-            <div class="col-lg-4 m-4">
-              <p class="text-lg mb-0">Name your event</p>
-              <form class="verticalform">
-                <input type="text" class="form-control" />
-              </form>
-              <p />
+          <form action="/newEvent" method="POST">
+            <!-- Name INput -->
+            <div class="row align-items-center justify-content-center">
+              <div class="col-lg-4 m-4">
+                <p class="text-lg mb-0">Name your event</p>
+                <input type="text" class="form-control" name="title" />
+                <p />
 
-              <!-- Date Picker -->
-              <p class="text-lg mb-0">Select a date</p>
-              {% block scripts %}
-              {{ super() }}
-              {{ datepicker.loader() }} {# to load jQuery-ui #}
-              {{ datepicker.picker(id=".dp") }}
-              {% endblock %}
-              <form class="verticalform">
-                <input type="text" class="form-control dp" />
-              </form>
-              <p />
+                <!-- Date Picker -->
+                <p class="text-lg mb-0">Select a date</p>
+                {% block scripts %}
+                {{ super() }}
+                {{ datepicker.loader() }} {# to load jQuery-ui #}
+                {{ datepicker.picker(id=".dp") }}
+                {% endblock %}
+                <input type="text" class="form-control dp" name="eDate" />
+                <p />
 
-              <!-- Hours Dropdown-->
-              <p class="text-lg mb-0">Type an hour</p>
-              <form class="verticalform">
-                <input type="text" class="form-control" placeholder="Example: 17:30, 20:15" />
-              </form>
-              <p />
-              <p />
+                <!-- Event Hour-->
+                <p class="text-lg mb-0">Type an hour</p>
+                <input type="text" class="form-control" name="et" />
+                <p />
 
-              <!--Create Event Button-->
-
-              <div class="row justify-content-center m-4">
-                <div class="my-2">
-                  <a href="/inviteFriends" class="btn btn-success btn-icon-split btn-lg">
-                    <span class="icon text-white-50">
-                      <i class="fas fa-check"></i>
-                    </span>
-                    <span class="text">Create Event</span>
-                  </a>
+                <!--Create Event Button-->
+                <input type="submit" title="Create Event" class="form-control" />
+                <div class="row justify-content-center m-4">
+                  <div class="my-2">
+                    <a href="/inviteFriends" class="btn btn-success btn-icon-split btn-lg">
+                      <span class="icon text-white-50">
+                        <i class="fas fa-check"></i>
+                      </span>
+                      <span class="text">Create Event</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </form>
 
           {% endblock %}
           <!-- End of Main Content -->

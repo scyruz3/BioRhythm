@@ -29,9 +29,9 @@ def calculateBioRhythm(birthdate: datetime.datetime) -> dict:
     eArr = [None] * 10
     iArr = [None] * 10
     for i in range(1, 11):
-        pArr[i - 1] = getPhysicalBioRhythm(getDaysFromBirth(birthdate, offset=i))
-        eArr[i - 1] = getEmotionalBioRhythm(getDaysFromBirth(birthdate, offset=i))
-        iArr[i - 1] = getIntellectualBioRhythm(getDaysFromBirth(birthdate, offset=i))
+        pArr[i - 1] = getPhysicalBioRhythm(getDaysFromBirthToday(birthdate, offset=i))
+        eArr[i - 1] = getEmotionalBioRhythm(getDaysFromBirthToday(birthdate, offset=i))
+        iArr[i - 1] = getIntellectualBioRhythm(getDaysFromBirthToday(birthdate, offset=i))
     biorhythm = {
         "physical": pArr,
         "emotional": eArr,
@@ -41,8 +41,7 @@ def calculateBioRhythm(birthdate: datetime.datetime) -> dict:
     }
     return biorhythm
 
-
-def getDaysFromBirth(birthdate: datetime.datetime, offset: int) -> int:
+def getDaysFromBirthToday(birthdate: datetime.datetime, offset: int) -> int:
     baseDate = datetime.datetime.today() + datetime.timedelta(days=offset)
     return (baseDate - birthdate).days
 
@@ -57,3 +56,28 @@ def getEmotionalBioRhythm(delta: int) -> float:
 
 def getIntellectualBioRhythm(delta: int) -> float:
     return round(math.sin((2 * math.pi * delta) / 33), 4)
+
+def getBioRhythmTypeForEvent(userId: string, eventDate: datetime.datetime) -> str:
+    user = userDAO.getUserById(userId=ObjectId(userId))
+    print(user)
+
+    eventDate = datetime.datetime.strptime(eventDate, '%Y-%m-%d')
+    ed = datetime.datetime.combine(eventDate, datetime.datetime.min.time())
+
+    physical = getPhysicalBioRhythm((ed - user["birthdate"]).days)
+    emotional = getEmotionalBioRhythm((ed - user["birthdate"]).days)
+    intellectual = getIntellectualBioRhythm((ed - user["birthdate"]).days)
+    
+    types = [physical, emotional, intellectual]
+
+    biorhythmType = 0.0
+    for type in types:
+        if type > biorhythmType:
+            biorhythmType = type
+
+    if (biorhythmType == physical):
+        return 'physical'
+    elif (biorhythmType == emotional):
+        return 'emotional'
+    else:
+        return 'intellectual'
