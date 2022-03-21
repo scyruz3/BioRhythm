@@ -10,14 +10,15 @@ def get_newEvent():
         newEvent = {
                 'creator': '622d0e529523a13ef2ad42f8',
                 'title': request.form['title'],
-                'description': 'This is the description',
+                'description': request.form['description'],
                 'biorhythmType': biorhythmManager.getBioRhythmTypeForEvent('622d0e529523a13ef2ad42f8', request.form['eDate']),
                 'confirmedUsers': [],
                 'eventDate': request.form['eDate'],
+                'eventTime': request.form['etime'],
                 'invitedUsers': []
             }
 
-        eventManager.postEvent(newEvent, '20:35')
+        eventManager.postEvent(newEvent)
 
     return render_template(
         "createEvent.html",
