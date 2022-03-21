@@ -376,21 +376,22 @@
                 <input type="text" class="form-control" name="description" autocomplete="off" />
                 <p />
 
+
+                <!-- Event Hour-->
+                <p class="text-lg mb-0">Type an hour</p>
+                <input type="text" class="form-control" placeholder="Examples: 17:45, 20:30" name="etime"
+                  autocomplete="off" />
+                <p />
+
+
                 <!-- Date Picker -->
                 <p class="text-lg mb-0">Select a date</p>
                 {% block scripts %}
                 {{ super() }}
                 {{ datepicker.loader() }} {# to load jQuery-ui #}
                 {{ datepicker.picker(id=".dp") }}
-
-                <input type="text" class="form-control dp" name="eDate" autocomplete="off" />
-                <p />
-
-                <!-- Event Hour-->
-                <p class="text-lg mb-0">Type an hour</p>
                 {% endblock %}
-                <input type="text" class="form-control" placeholder="Examples: 17:45, 20:30" name="etime"
-                  autocomplete="off" />
+                <input type="text" class="form-control dp" name="eDate" autocomplete="off" />
                 <p />
 
                 <!--Create Event Button-->

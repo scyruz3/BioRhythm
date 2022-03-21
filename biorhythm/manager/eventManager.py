@@ -17,8 +17,8 @@ def getPendingEventsByUser(userId: ObjectId) -> List[dict]:
     pendingEvents = eventDAO.getPendingEventsByUser(userId=userId)
     return pendingEvents
 
-def postEvent(newEvent, eventTime):
-    eventTime = datetime.datetime.strptime(eventTime, '%H:%M').time()
+def postEvent(newEvent):
+    eventTime = datetime.datetime.strptime(newEvent['eventTime'], '%H:%M').time()
     eventDate = datetime.datetime.strptime(newEvent['eventDate'], '%Y-%m-%d')
     newEvent['eventDate'] = datetime.datetime.combine(eventDate, eventTime)
     newEvent = eventDAO.postNewEvent(event=newEvent)
