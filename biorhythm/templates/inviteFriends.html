@@ -16,9 +16,6 @@
 {% endblock %}
 
 <!-- global JS variables from flask-->
-<script>
-  let biorhythm = {{ biorhythm | tojson}}
-</script>
 
 
 <!-- Begin Page Content -->
@@ -31,116 +28,37 @@
   <!--Friends Cards-->
   <div class="row align-items-center justify-content-center m-4">
     <!--Invite All Friends to Event Btn-->
-    <div class="my-2"></div>
-    <a href="#" class="btn btn-info btn-icon-split btn-lg">
-      <span class="text">Invite All</span>
-    </a>
+    <form action="/inviteFriends" method="POST">
+      <div class="my-2">
+        <a href="#" class="btn btn-info btn-lg">
+          <input type="text" name="list" value="{{friends}}" hidden="true" />
+          <input type="submit" value="Invite All" class="btn btn-info btn-lg m-2" />
+        </a>
+      </div>
+    </form>
   </div>
   <div class="row align-items-center justify-content-center">
-    <div class="col-lg-4 m-4">
-      <div class="card border-left-info shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-lg font-weight-bold text-info text-uppercase mb-0">
-                Rodrigo Maldonado
+    <div class="col-lg-9 m-4">
+      {% for friend in friends %}
+      <form action="/inviteFriends" method="POST">
+        <div class="card border-left-info shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-lg font-weight-bold text-info text-uppercase mb-0">
+                  {{friend['username']}}
+                </div>
               </div>
-            </div>
-            <div class="col-auto">
-              <a href="#" class="btn btn-success btn-circle btn-lg">
-                <i class="fas fa-check"></i>
-              </a>
+              <input type="text" name="friendId" value="{{friend['userId']}}" hidden="true" />
+              <input type="submit" value="invite" />
             </div>
           </div>
         </div>
-      </div>
-      <div class="card border-left-info shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-lg font-weight-bold text-info text-uppercase mb-0">
-                Priscila Ruiz
-              </div>
-            </div>
-            <div class="col-auto">
-              <a href="#" class="btn btn-success btn-circle btn-lg">
-                <i class="fas fa-check"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card border-left-info shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-lg font-weight-bold text-info text-uppercase mb-0">
-                Fernanda LopezVelarde
-              </div>
-            </div>
-            <div class="col-auto">
-              <a href="#" class="btn btn-success btn-circle btn-lg">
-                <i class="fas fa-check"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 m-4">
-      <div class="card border-left-info shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-lg font-weight-bold text-info text-uppercase mb-0">
-                Rodrigo Maldonado
-              </div>
-            </div>
-            <div class="col-auto">
-              <a href="#" class="btn btn-success btn-circle btn-lg">
-                <i class="fas fa-check"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card border-left-info shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-lg font-weight-bold text-info text-uppercase mb-0">
-                Priscila Ruiz
-              </div>
-            </div>
-            <div class="col-auto">
-              <a href="#" class="btn btn-success btn-circle btn-lg">
-                <i class="fas fa-check"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card border-left-info shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-lg font-weight-bold text-info text-uppercase mb-0">
-                Fernanda LopezVelarde
-              </div>
-            </div>
-            <div class="col-auto">
-              <a href="#" class="btn btn-success btn-circle btn-lg">
-                <i class="fas fa-check"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      </form>
+      {% endfor %}
     </div>
   </div>
+  {% endblock content%}
 
   <!-- /.container-fluid -->
-  {% endblock content%}
-  </div>
   <!-- End of Main Content -->

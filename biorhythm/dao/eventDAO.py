@@ -1,3 +1,4 @@
+import string
 from typing import List
 from biorhythm import mongo
 from bson import ObjectId, json_util
@@ -34,5 +35,28 @@ def postNewEvent(event) -> bool:
         'eventDate': event['eventDate'],
         'invitedUsers': event['invitedUsers']
         })
-        
+    newEvent = db.Events.find_one({
+        'creator': event['creator'], 
+        'title': event['title'], 
+        'description': event['description'], 
+        'biorhythmType':event['biorhythmType'],
+        'eventDate': event['eventDate'],
+        }) 
+    return newEvent['_id']
+
+def getEventbyEventId(eventId: ObjectId):
+    event = db.Events.find_one({"_id": ObjectId(eventId)})
+    return event
+
+def updateEvent(eventId: ObjectId, newValues)-> bool:
+    db.Events.update_one({'_id': eventId}, {'$set': {
+        'title': newValues['title'], 
+        'description': newValues['description'], 
+        'biorhythmType':newValues['biorhythmType'],
+        'eventDate': newValues['eventDate']
+    }})
     return 0
+
+def un_inviteFriend(eventId: ObjectId, newList)-> bool:
+    db.Events.update_one({'_id': ObjectId(eventId)}, {'$set': {'invitedUsers': newList}})
+    return newList
