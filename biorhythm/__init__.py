@@ -23,6 +23,9 @@ datepicker(app=app, local=['static/js/jquery-ui.js', 'static/css/jquery-ui.css']
 import biorhythm.views.views
 import biorhythm.views.dashboardView
 import biorhythm.views.createEventView
+import biorhythm.views.friendRequestView
+import biorhythm.views.findUsersView
+
 
 
 
