@@ -1,15 +1,63 @@
-from biorhythm import mongo
-from bson import ObjectId
 from datetime import datetime
+from enum import unique
+from typing_extensions import Required
+from mongoengine import *  
 
-db = mongo.db
+class User(Document):
+    username = StringField(unique = True, Required = True)
+    email = EmailField (unique = True)
+    birthdate = DateField()
+    password = BinaryField(Required = True)
+    img = ImageField(Required = True)
+    date_created = DateTimeField(default=datetime.utcnow)
 
 
-class User(db.Model):
-    id = db.Colum(db.Integer, primary_key = True)
-    username = db.Colum(db.String(20), unique = True, nullable = False)
-    birthdate = db.Colum(db.Date)
-    email = db.Colum(db.String(128), unique = True. nullable = False)
-    image_file = db.Colum(db.String(20), nullable = False, default = "default.jpg")
-    password  = db.Column(db.String(20), nullable = False)
-    date_created = db.Column(db.DateTime, default= datetime.utcnow)
+
+    def __init__(self, id, username, birthdate, email, img, password, date_created):
+        self.id = id
+        self.username = username
+        self.birthdate = birthdate
+        self.email = email
+        self.img = img
+        self.password = password
+        self.date_created = date_created
+        self.is_admin = False
+
+    def get_id (self):
+        return self.id
+
+    def set_id(self, id):
+        self.id = id
+
+    def get_username(self):
+        return self.username
+
+    def set_username(self, username):
+        self.username = username
+
+    def get_birthdate(self):
+        return self.birthdate
+
+    def set_birthdate(self, birhdate):
+        self.birthdate = birhdate
+
+    def get_email(self):
+        return self.email
+
+    def set_email(self, email):
+        self.email = email
+
+    def get_img(self):
+        return self.image_file
+
+    def set_img(self, img):
+        self.image_file = img
+
+    def get_password(self) :
+        return self.password
+
+    def get_admin(self):
+        return self.is_admin
+
+    def set_admin(self):
+        self.is_admin = True   
