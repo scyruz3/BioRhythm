@@ -1,26 +1,60 @@
 from crypt import methods
 from biorhythm import app
-from flask import redirect, render_template, request, Response
+from flask import redirect, render_template, request, session, url_for
 from biorhythm.manager import biorhythmManager, eventManager
 
 @app.route("/newEvent", methods=["GET","POST"])
-def get_newEvent():
-    biorhythm = biorhythmManager.getBioRhythm("622d0e529523a13ef2ad42f8")
+def newEvent():
+    session['userId'] = '622d0e529523a13ef2ad42f8'
     if request.method == 'POST':
         newEvent = {
-                'creator': '622d0e529523a13ef2ad42f8',
+                'creator': session['userId'],
                 'title': request.form['title'],
                 'description': request.form['description'],
-                'biorhythmType': biorhythmManager.getBioRhythmTypeForEvent('622d0e529523a13ef2ad42f8', request.form['eDate']),
+                'biorhythmType': biorhythmManager.getBioRhythmTypeForEvent(session['userId'], request.form['eDate']),
                 'confirmedUsers': [],
                 'eventDate': request.form['eDate'],
                 'eventTime': request.form['etime'],
                 'invitedUsers': []
             }
+        session['eventId'] = eventManager.postEvent(newEvent)
+        return redirect(url_for('inviteFriends'))
+        
+    else:
+        return render_template(
+            "createEvent.html",
+        )
 
-        eventManager.postEvent(newEvent)
 
+@app.route("/inviteFriends", methods=["GET", "POST"])
+def inviteFriends():
+    if request.method == 'POST':
+        if('friendId' in request.form):
+            eventManager.inviteFriendToEvent(session['eventId'], request.form['friendId'])
+        else:
+            eventManager.inviteAllFriends(session['eventId'], session['friendsToInvite'])
+
+    session['friendsToInvite'] = biorhythmManager.getFriendsToInviteByBioRhythm(session['eventId'])
     return render_template(
-        "createEvent.html",
-        biorhythm=biorhythm        
+        "inviteFriends.html",
+        friends=session['friendsToInvite']
     )
+
+@app.route("/modifyEvent",  methods=["GET", "POST"])
+def modifyEvent():
+    if request.method == 'POST':
+        if('friendId' in request.form):
+            eventManager.uninviteFriendFromEvent(session['eventId'], request.form['friendId'])     
+     
+    biorhythm = biorhythmManager.getBioRhythm(session['userId'])
+    eventValues = eventManager.getEvent(session['eventId'])
+    return render_template(
+    "modifyEvent.html",
+    biorhythm=biorhythm,
+    eventTitle=eventValues['title'],
+    eventDescription=eventValues['description'],
+    eventDate=eventValues['eventDate'],
+    eventTime=eventValues['eventTime'],
+    invitedUsers=eventValues['invitedUsers']
+    )     
+

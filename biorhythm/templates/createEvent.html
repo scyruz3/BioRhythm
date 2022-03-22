@@ -20,9 +20,7 @@
   <link href="/static/css/sb-admin-2.css" rel="stylesheet" />
 
   <!-- global JS variables from flask-->
-  <script>
-    let biorhythm = {{ biorhythm | tojson}}
-  </script>
+
 
   {% endblock %}
 </head>
@@ -368,20 +366,17 @@
 
                 <!-- Name Input -->
                 <p class="text-lg mb-0">Name your event</p>
-                <input type="text" class="form-control" name="title" autocomplete="off" />
-                <p />
+                <input type="text" class="form-control mb-2" name="title" autocomplete="off" />
 
                 <!-- Event Description -->
                 <p class="text-lg mb-0">Add a description</p>
-                <input type="text" class="form-control" name="description" autocomplete="off" />
-                <p />
+                <input type="text" class="form-control mb-2" name="description" autocomplete="off" />
 
 
                 <!-- Event Hour-->
                 <p class="text-lg mb-0">Type an hour</p>
-                <input type="text" class="form-control" placeholder="Examples: 17:45, 20:30" name="etime"
+                <input type="text" class="form-control mb-2" placeholder="Examples: 17:45, 20:30" name="etime"
                   autocomplete="off" />
-                <p />
 
 
                 <!-- Date Picker -->
@@ -391,18 +386,18 @@
                 {{ datepicker.loader() }} {# to load jQuery-ui #}
                 {{ datepicker.picker(id=".dp") }}
                 {% endblock %}
-                <input type="text" class="form-control dp" name="eDate" autocomplete="off" />
-                <p />
+                <input type="text" class="form-control dp mb-4" name="eDate" autocomplete="off" />
 
                 <!--Create Event Button-->
-                <input type="submit" title="Create Event" class="form-control" />
+
                 <div class="row justify-content-center m-4">
+
                   <div class="my-2">
                     <a href="/inviteFriends" class="btn btn-success btn-icon-split btn-lg">
                       <span class="icon text-white-50">
                         <i class="fas fa-check"></i>
                       </span>
-                      <span class="text">Create Event</span>
+                      <input type="submit" value="Create Event" class="btn btn-success btn-icon-split btn-lg m-2">
                     </a>
                   </div>
                 </div>

@@ -2,13 +2,13 @@
 import datetime
 import math
 import string
+from flask import session
 from biorhythm.dao import userDAO
 from bson import ObjectId
-
+from biorhythm.manager import eventManager
 
 def getBioRhythm(userId: string) -> bool:
     user = userDAO.getUserById(userId=ObjectId(userId))
-    print(user)
     # check if the biorhythm is updated
     if datetime.datetime.today() - user["biorhythm"]["startDate"] > datetime.timedelta(
         days=0
@@ -59,7 +59,6 @@ def getIntellectualBioRhythm(delta: int) -> float:
 
 def getBioRhythmTypeForEvent(userId: string, eventDate: datetime.datetime) -> str:
     user = userDAO.getUserById(userId=ObjectId(userId))
-    print(user)
 
     eventDate = datetime.datetime.strptime(eventDate, '%Y-%m-%d')
 
@@ -73,10 +72,22 @@ def getBioRhythmTypeForEvent(userId: string, eventDate: datetime.datetime) -> st
     for type in types:
         if type > biorhythmType:
             biorhythmType = type
-    print(biorhythmType)
     if (biorhythmType == physical):
         return 'physical'
     elif (biorhythmType == emotional):
         return 'emotional'
     else:
         return 'intellectual'
+
+def getFriendsToInviteByBioRhythm(eventId: ObjectId):
+    event = eventManager.getEvent(eventId)
+    friends = eventManager.getUsers()
+    friendsToInvite = []
+    for friend in friends:
+        brType = getBioRhythmTypeForEvent(str(friend['_id']['$oid']), event['eventDate'])
+        if (brType == event['biorhythmType'] and ({'userId': str(friend['_id']['$oid']), 'username': friend['username']} not in event['invitedUsers'])):
+            friendsToInvite.append({'userId': str(friend['_id']['$oid']), 'username': friend['username']})
+    print(friendsToInvite)
+    print(event['invitedUsers'])
+    return friendsToInvite
+

@@ -1,5 +1,6 @@
+import json
 from biorhythm import mongo
-from bson import ObjectId
+from bson import ObjectId, json_util
 
 db = mongo.db
 
@@ -20,3 +21,7 @@ def updateUserBioRhythm(userId: ObjectId, biorhythm: dict):
     ).modified_count
     user = db.UserData.find_one({"_id": userId})
     return user
+
+def getAllUsers():
+    allUsers = json.loads(json_util.dumps(db.UserData.find()))
+    return allUsers
