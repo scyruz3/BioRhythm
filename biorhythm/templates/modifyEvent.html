@@ -362,31 +362,39 @@
           <!-- Name INput -->
           <div class="row align-items-center justify-content-center">
             <div class="col-lg-4 m-4">
-              <p class="text-lg mb-0">Name of Event</p>
-              <input type="text" class="form-control" name="title" value="{{ eventTitle }}" />
+              <form action="/modifyEvent" method="POST">
+                <p class="text-lg mb-0">Name of Event</p>
+                <input type="text" class="form-control" name="title" value="{{ eventTitle }}" autocomplete="off" />
 
-              <!-- Hours Dropdown-->
-              <p class="text-lg mb-0">Hour</p>
-              <input type="text" class="form-control mb-2" name="eventTime" value="{{ eventTime }}"
-                placeholder="Example: 17:30, 20:15" />
+                <!-- Event Description -->
+                <p class="text-lg mb-0">Description</p>
+                <input type="text" class="form-control mb-2" name="description" value="{{ eventDescription }}"
+                  autocomplete="off" />
 
-              <!-- Date Picker -->
-              <p class="text-lg mb-0">Date</p>
-              {% block scripts %}
-              {{ super() }}
-              {{ datepicker.loader() }} {# to load jQuery-ui #}
-              {{ datepicker.picker(id=".dp") }}
-              {% endblock %}
-              <input type="text" class="form-control dp" name="eventDate" value="{{ eventDate }}" />
-              <!--Modify Event Button-->
-              <div class="row justify-content-center m-4">
-                <a href="/inviteFriends" class="btn btn-success btn-icon-split btn-lg m-4">
-                  <span class="icon text-white-50">
-                    <i class="fas fa-check"></i>
-                  </span>
-                  <span class="text">Modify Details</span>
-                </a>
-              </div>
+                <!-- Hours Dropdown-->
+                <p class="text-lg mb-0">Hour</p>
+                <input type="text" class="form-control mb-2" name="eventTime" value="{{ eventTime }}" autocomplete="off"
+                  placeholder="Example: 17:30, 20:15" />
+
+                <!-- Date Picker -->
+                <p class="text-lg mb-0">Date</p>
+                {% block scripts %}
+                {{ super() }}
+                {{ datepicker.loader() }} {# to load jQuery-ui #}
+                {{ datepicker.picker(id=".dp") }}
+                {% endblock %}
+                <input type="text" class="form-control dp" name="eventDate" value="{{ eventDate }}"
+                  autocomplete="off" />
+                <!--Modify Event Button-->
+                <div class="row justify-content-center m-4">
+                  <a class="btn btn-success btn-icon-split btn-lg m-4">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-check"></i>
+                    </span>
+                    <input type="submit" value="Modify Details" class="btn btn-success btn-icon-split btn-lg m-2" />
+                  </a>
+                </div>
+              </form>
             </div>
 
             <!--Friends Invited Cards-->

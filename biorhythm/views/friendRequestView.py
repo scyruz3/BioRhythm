@@ -1,7 +1,7 @@
 from operator import methodcaller
 from os import stat
 from biorhythm import app
-from biorhythm.manager import friendManager, userManager
+from biorhythm.manager import friendManager
 from flask import request, Response
 
 

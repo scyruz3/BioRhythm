@@ -45,7 +45,14 @@ def modifyEvent():
     if request.method == 'POST':
         if('friendId' in request.form):
             eventManager.uninviteFriendFromEvent(session['eventId'], request.form['friendId'])     
-     
+        else:
+            eventManager.updateEvent(session['eventId'], {
+                'title': request.form['title'],
+                'description': request.form['description'],
+                'biorhythmType': biorhythmManager.getBioRhythmTypeForEvent(session['userId'], request.form['eventDate']),
+                'eventDate': request.form['eventDate'],
+                'eventTime': request.form['eventTime'],
+            })
     biorhythm = biorhythmManager.getBioRhythm(session['userId'])
     eventValues = eventManager.getEvent(session['eventId'])
     return render_template(

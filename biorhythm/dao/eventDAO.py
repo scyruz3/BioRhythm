@@ -49,7 +49,7 @@ def getEventbyEventId(eventId: ObjectId):
     return event
 
 def updateEvent(eventId: ObjectId, newValues)-> bool:
-    db.Events.update_one({'_id': eventId}, {'$set': {
+    db.Events.update_one({'_id': ObjectId(eventId)}, {'$set': {
         'title': newValues['title'], 
         'description': newValues['description'], 
         'biorhythmType':newValues['biorhythmType'],
