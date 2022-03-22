@@ -10,6 +10,15 @@ def getUserById(userId: ObjectId):
     return user
 
 
+def findUsersByUsername(username: str):
+    query = {"username": {
+        "$regex": f'.*{username}.*',
+        "$options": 'i'
+    }}
+    results = db.UserData.find(query)
+    return results
+
+
 def getUserBioRhythm(userId: ObjectId):
     user = db.UserData.find_one({"_id": userId})
     return user["biorhythm"]
