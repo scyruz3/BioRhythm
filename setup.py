@@ -6,10 +6,14 @@ setup(
     include_package_data=True,
     install_requires=[
         "flask[async]",
-        "Flask-PyMongo",
+        "flask_pymongo",
         "python-dotenv",
         "pymongo[srv]",
         "flask_wtf",
         "email_validator",
+        "flask-bootstrap",
+        "flask-datepicker",
+        "mongoengine",
+        "Pillow"
     ],
 )
