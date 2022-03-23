@@ -1,6 +1,11 @@
 from biorhythm.dao import friendDAO, userDAO
 
 
+def get_pending_requests(userId: str):
+    requests = friendDAO.get_pending_requests_for_user(userId)
+    return requests
+
+
 def find_users_by_username(username: str):
     results = userDAO.findUsersByUsername(username)
     return results
