@@ -12,7 +12,21 @@
 <link href="/static/css/sb-admin-2.min.css" rel="stylesheet">
 
 <!-- Custom styles for this page -->
-<link href="static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="/static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+<script type="text/javascript">
+    function sendFriendRequest(friendID) {
+        data = { "userID": "622d0e529523a13ef2ad42f8", "friendID": friendID };
+
+        console.log(`sending request from 622d0e529523a13ef2ad42f8 to ${friendID}`);
+        $.ajax({
+            type: 'post',
+            url: '/friend-requests',
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8"
+        })
+    }
+</script>
 {% endblock %}
 
 
@@ -36,9 +50,10 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <a href="#" class="btn btn-success btn-circle btn-lg">
+                            <button data-friendID={{result["_id"]}} class="btn btn-success btn-circle btn-lg"
+                                onclick="sendFriendRequest(this.getAttribute('data-friendID'))">
                                 <i class="fas fa-plus"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
