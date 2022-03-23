@@ -23,7 +23,6 @@ def serve_img():
 
 @app.route("/docs/pfp/<friendID>", methods=["GET"])
 def serve_friend_img(friendID):
-    img = getImageFromBinary.getImageFromBinary(
-        userDAO.getUserImgBin(friendID)
-    )
+    print(friendID)
+    img = getImageFromBinary.getImageFromBinary(userDAO.getUserImgBin(friendID))
     return serve_pil_image(img)

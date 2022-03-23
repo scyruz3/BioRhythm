@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <button data-friendID={{result["_id"]}} class="btn btn-success btn-circle btn-lg"
+                            <button data-friendID={{result["_id"]["$oid"]}} class="btn btn-success btn-circle btn-lg"
                                 onclick="sendFriendRequest(this.getAttribute('data-friendID'))">
                                 <i class="fas fa-plus"></i>
                             </button>

@@ -20,8 +20,7 @@ def findSingleUserByUsername(username: str):
 def findUsersByUsername(username: str):
     query = {"username": {"$regex": f".*{username}.*", "$options": "i"}}
     print(f"running query {query}")
-    users = json.loads(json_util.dumps(
-        db.UserData.find(query, {"username": 1})))
+    users = json.loads(json_util.dumps(db.UserData.find(query, {"username": 1})))
     return users
 
 
