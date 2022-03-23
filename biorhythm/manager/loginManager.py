@@ -7,7 +7,7 @@ import bcrypt
 
 def login(username: str, password: str) -> bool:
     # find the user by username
-    user = userDAO.findUsersByUsername(username)
+    user = userDAO.findSingleUserByUsername(username)
     if not user:
         return False
     hashedPass = user["password"]

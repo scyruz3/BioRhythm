@@ -11,12 +11,18 @@ def getUserById(userId: ObjectId):
     return user
 
 
+def findSingleUserByUsername(username: str):
+    query = {"username": username}
+    user = db.UserData.find_one(query)
+    return user
+
+
 def findUsersByUsername(username: str):
     query = {"username": {"$regex": f".*{username}.*", "$options": "i"}}
     print(f"running query {query}")
-    user = json.loads(json_util.dumps(
+    users = json.loads(json_util.dumps(
         db.UserData.find(query, {"username": 1})))
-    return user
+    return users
 
 
 def getUserBioRhythm(userId: ObjectId):
