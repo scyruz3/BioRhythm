@@ -7,8 +7,4 @@ from biorhythm.manager import friendManager
 def find_users():
     query = request.args.get("query")
     results = friendManager.find_users_by_username(query)
-    return render_template(
-        "findUsers.html",
-        query=query,
-        results=results
-    )
+    return render_template("findUsers.html", query=query, results=results)
