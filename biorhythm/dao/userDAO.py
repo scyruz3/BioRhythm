@@ -1,6 +1,7 @@
 import json
 from biorhythm import mongo
 from bson import ObjectId, json_util
+
 db = mongo.db
 
 
@@ -10,12 +11,9 @@ def getUserById(userId: ObjectId):
 
 
 def findUsersByUsername(username: str):
-    query = {"username": {
-        "$regex": f'.*{username}.*',
-        "$options": 'i'
-    }}
-    results = db.UserData.find(query)
-    return results
+    query = {"username": {"$regex": f".*{username}.*", "$options": "i"}}
+    user = db.UserData.find_one(query)
+    return user
 
 
 def getUserBioRhythm(userId: ObjectId):
@@ -30,9 +28,11 @@ def updateUserBioRhythm(userId: ObjectId, biorhythm: dict):
     user = db.UserData.find_one({"_id": userId})
     return user
 
+
 def getAllUsers():
     allUsers = json.loads(json_util.dumps(db.UserData.find()))
     return allUsers
+
 
 def insertUser(user: dict):
     inserted_user = db.UserData.insert_one(user)
