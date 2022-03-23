@@ -22,40 +22,58 @@
 <c class="container-fluid">
   {% block content %}
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">INVITE FRIENDS TO YOUR EVENT!</h1>
-  <p></p>
 
   <!--Friends Cards-->
-  <div class="row align-items-center justify-content-center m-4">
-    <!--Invite All Friends to Event Btn-->
-    <form action="/inviteFriends" method="POST">
-      <div class="my-2">
-        <a href="#" class="btn btn-info btn-lg">
-          <input type="text" name="list" value="{{friends}}" hidden="true" />
-          <input type="submit" value="Invite All" class="btn btn-info btn-lg m-2" />
-        </a>
-      </div>
-    </form>
-  </div>
   <div class="row align-items-center justify-content-center">
-    <div class="col-lg-9 m-4">
-      {% for friend in friends %}
-      <form action="/inviteFriends" method="POST">
-        <div class="card border-left-info shadow h-100 py-2">
-          <div class="card-body">
-            <div class="row no-gutters align-items-center">
-              <div class="col mr-2">
-                <div class="text-lg font-weight-bold text-info text-uppercase mb-0">
-                  {{friend['username']}}
+    <div class="card col-lg-9 shadow m-2">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary text-center">Suggestions based on the event's BioRhythm:</h6>
+        <h5 class="m-0 font-weight-bold text-primary text-center text-uppercase">{{eventBR}}</h5>
+      </div>
+      <div class="card-body">
+        {% if not friends %}
+        <p class="text-lg mb-2 text-center">You have no friends left to invite :(</p>
+        <div class="row no-gutters justify-content-center align-items-center">
+          <a href="{{ url_for('modifyEvent',event = eventId) }}" class="btn btn-primary btn-circle">
+            <i class="fas fa-backward"></i>
+          </a>
+        </div>
+        {% else %}
+        {% for friend in friends %}
+        <form action="{{ url_for('inviteFriends',event = eventId) }}" method="POST">
+          <div class="card border-bottom-secondary border-0 h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-lg font-weight-bold text-secondary text-uppercase mb-0">
+                    {{friend['username']}}
+                  </div>
                 </div>
+                <a>
+                  <input type="text" name="friendId" value="{{friend['userId']}}" hidden="true" />
+                  <input type="submit" value="Invite" class="btn btn-warning btn-sm" />
+                </a>
               </div>
-              <input type="text" name="friendId" value="{{friend['userId']}}" hidden="true" />
-              <input type="submit" value="invite" />
             </div>
           </div>
+        </form>
+        {% endfor %}
+        <!--Invite All Friends to Event Btn-->
+        <div class="row align-items-center justify-content-center m-0">
+          <form action="{{ url_for('inviteFriends',event = eventId) }}" method="POST">
+            <div class="my-2">
+              <input type="text" name="list" value="{{friends}}" hidden="true" />
+              <input type="submit" value="Invite All" class="btn btn-primary btn-lg m-3" />
+            </div>
+          </form>
         </div>
-      </form>
-      {% endfor %}
+        <div class="row no-gutters justify-content-center align-items-center">
+          <a href="{{ url_for('modifyEvent',event = eventId) }}" class="btn btn-primary btn-circle">
+            <i class="fas fa-backward"></i>
+          </a>
+        </div>
+        {% endif %}
+      </div>
     </div>
   </div>
   {% endblock content%}

@@ -60,3 +60,7 @@ def updateEvent(eventId: ObjectId, newValues)-> bool:
 def un_inviteFriend(eventId: ObjectId, newList)-> bool:
     db.Events.update_one({'_id': ObjectId(eventId)}, {'$set': {'invitedUsers': newList}})
     return newList
+
+def deleteEvent(eventId: ObjectId):
+    db.Events.delete_one({'_id':ObjectId(eventId)})
+    return('Event Deleted')
