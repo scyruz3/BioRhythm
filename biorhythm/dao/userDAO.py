@@ -1,7 +1,8 @@
 from biorhythm import mongo
 from bson import ObjectId
-from biorhythm.MODELS import userMODEL as User
+from biorhythm.models import userMODEL
 
+User = userMODEL()
 db = mongo.db
 
 

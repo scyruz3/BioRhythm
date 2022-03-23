@@ -1,14 +1,13 @@
 from datetime import datetime
 from enum import unique
-from typing_extensions import Required
-from mongoengine import *  
+from mongoengine import Document, StringField, ImageField,  DateField, EmailField, BinaryField, DateTimeField
 
 class User(Document):
-    username = StringField(unique = True, Required = True)
+    username = StringField(unique = True, required = True)
     email = EmailField (unique = True)
     birthdate = DateField()
-    password = BinaryField(Required = True)
-    img = ImageField(Required = True)
+    password = BinaryField(required = True)
+    img = ImageField()
     date_created = DateTimeField(default=datetime.utcnow)
 
 

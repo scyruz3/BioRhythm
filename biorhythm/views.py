@@ -1,9 +1,9 @@
 #from crypt import methods
 from unicodedata import category
-from biorhythm import app
+#from biorhythm import app
 from flask import render_template, url_for, redirect, flash
 from biorhythm.forms.forms import SignUpForm
-from biorhythm.dao.userDAO import createUser
+from biorhythm.dao import userDAO
 
 @app.route("/")
 def hello_world():
@@ -13,7 +13,7 @@ def hello_world():
 def register():
     form = SignUpForm()
     if form.validate_on_submit():
-        user = createUser(
+        user = userDAO.create_user(
             username = form.username.data, 
             birthdate = form.birthdate.data,
             email = form.email.data,
