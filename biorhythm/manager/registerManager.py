@@ -24,6 +24,8 @@ def registerUser(form: SignUpForm):
         "photo": encodedPfp,
         "biorhythm": biorhythmManager.calculateBioRhythm(convertedDate),
     }
-    # TODO: check if the user already exists
+
+    # check if the user already exists
+
     userDAO.insertUser(newUser)
     return
