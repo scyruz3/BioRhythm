@@ -389,6 +389,10 @@
                   {% endblock %}
                   <input type="text" class="form-control dp" name="eventDate" value="{{ eventDate }}"
                     autocomplete="off" />
+
+                  <!-- Validation error -->
+                  <p p class="text-sm text-danger m-0">{{errorMessage}}</p>
+
                   <!--Modify Event Button-->
                   <div class="row justify-content-center m-2">
                     <a class="btn btn-warning btn-icon-split btn-lg m-2">
