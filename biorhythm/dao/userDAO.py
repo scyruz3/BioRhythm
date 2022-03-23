@@ -1,6 +1,7 @@
 import json
 from biorhythm import mongo
-from bson import ObjectId, json_util
+from bson import ObjectId, json_util, binary
+from bson.objectid import ObjectId
 
 db = mongo.db
 
@@ -37,3 +38,8 @@ def getAllUsers():
 def insertUser(user: dict):
     inserted_user = db.UserData.insert_one(user)
     return inserted_user.inserted_id
+
+
+def getUserImgBin(userId: str) -> binary:
+    user = db.UserData.find_one({"_id": ObjectId(userId)})
+    return user["photo"]

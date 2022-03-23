@@ -13,9 +13,8 @@ def login(username: str, password: str) -> bool:
     hashedPass = user["password"]
     # check if passwords match
     if bcrypt.checkpw(password=bytes(password, "utf-8"), hashed_password=hashedPass):
-        print("user logged in!")
         session["userId"] = str(user["_id"])
-        print(session["userId"])
+        session["username"] = user["username"]
         return True
     else:
         return False

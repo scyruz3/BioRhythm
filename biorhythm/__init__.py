@@ -26,3 +26,4 @@ import biorhythm.views.friendRequestView
 import biorhythm.views.findUsersView
 import biorhythm.views.loginView
 import biorhythm.views.logoutView
+import biorhythm.views.views
