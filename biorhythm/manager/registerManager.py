@@ -1,4 +1,5 @@
 from datetime import datetime, time
+from xml.dom import UserDataHandler
 from biorhythm.manager import biorhythmManager
 from biorhythm.utils import SignUpForm
 from biorhythm.dao import userDAO
@@ -26,6 +27,9 @@ def registerUser(form: SignUpForm):
     }
 
     # check if the user already exists
+    exists = userDAO.findSingleUserByUsername(form.username.data)
+    if exists:
+        return "User already exists"
 
     userDAO.insertUser(newUser)
     return
