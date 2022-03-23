@@ -87,7 +87,5 @@ def getFriendsToInviteByBioRhythm(eventId: ObjectId):
         brType = getBioRhythmTypeForEvent(str(friend['_id']['$oid']), event['eventDate'])
         if (brType == event['biorhythmType'] and ({'userId': str(friend['_id']['$oid']), 'username': friend['username']} not in event['invitedUsers'])):
             friendsToInvite.append({'userId': str(friend['_id']['$oid']), 'username': friend['username']})
-    print(friendsToInvite)
-    print(event['invitedUsers'])
     return friendsToInvite
 

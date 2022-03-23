@@ -48,29 +48,30 @@ def updateEvent(eventId: ObjectId, newValues):
 
 def uninviteFriendFromEvent(eventId: ObjectId, uninvited: str):
     event = getEvent(eventId)
+    uninvited = userDAO.getUserById(userId=ObjectId(uninvited))
     invitedList = event['invitedUsers']
-    newList = []
-    for invited in invitedList:
-        if(str(invited['userId']) != uninvited):
-            newList.append({'userId': uninvited, 'username': invited['username']})
-    eventDAO.un_inviteFriend(eventId, newList)
+    invitedList.remove({'userId': str(uninvited['_id']), 'username': uninvited['username']})
+    eventDAO.un_inviteFriend(eventId, invitedList)
     return 0
 
 def inviteFriendToEvent(eventId: ObjectId, invited: str):
     event = getEvent(eventId)
     userToInvite = userDAO.getUserById(userId=ObjectId(invited))
     invitedList = event['invitedUsers']
-    invitedList.append({'userId': invited, 'username': userToInvite['username']})
+    invitedList.append({'userId': str(userToInvite['_id']), 'username': userToInvite['username']})
     eventDAO.un_inviteFriend(eventId, invitedList)
     return 0
 
 def inviteAllFriends(eventId: ObjectId, allList):
     event = getEvent(eventId)
     invitedList = event['invitedUsers']
-    for friend in allList:
-        invitedList.append(friend)
-    print(invitedList)
+    for invited in allList:
+        invitedList.append(invited)
     eventDAO.un_inviteFriend(eventId, invitedList)
+    return 0
+
+def deleteEvent(eventId: ObjectId):
+    eventDAO.deleteEvent(eventId)
     return 0
 
 def getUsers() -> List[dict]:
