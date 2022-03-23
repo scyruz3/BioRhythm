@@ -1,6 +1,5 @@
 asgiref==3.5.0
 bcrypt==3.2.0
--e git+ssh://git@github.com/vapo14/BioRhythm.git@6ad7a8ac20ff7b5f0989915632f3285d5caaddb8#egg=biorhythm
 black==22.1.0
 cachelib==0.6.0
 cffi==1.15.0
@@ -15,6 +14,7 @@ Flask-Login==0.5.0
 Flask-PyMongo==2.3.0
 Flask-Session==0.4.0
 Flask-WTF==1.0.0
+gunicorn==20.1.0
 idna==3.3
 itsdangerous==2.1.1
 Jinja2==3.0.3

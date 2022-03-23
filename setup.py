@@ -16,5 +16,6 @@ setup(
         "Pillow",
         "bcrypt",
         "flask-login",
+        "gunicorn",
     ],
 )
