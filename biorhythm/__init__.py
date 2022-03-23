@@ -25,6 +25,7 @@ import biorhythm.views.dashboardView
 import biorhythm.views.createEventView
 import biorhythm.views.friendRequestView
 import biorhythm.views.findUsersView
+import biorhythm.views.loginView
 
 
 

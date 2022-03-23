@@ -13,7 +13,7 @@ setup(
         "email_validator",
         "flask-bootstrap",
         "flask-datepicker",
-        "mongoengine",
-        "Pillow"
+        "Pillow",
+        "bcrypt",
     ],
 )

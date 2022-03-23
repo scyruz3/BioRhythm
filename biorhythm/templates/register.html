@@ -42,22 +42,25 @@
                     Create a Biorhythm Account!
                   </h1>
                 </div>
-                <form class="user" , method="POST" , action="">
+                <form
+                  class="user"
+                  method="POST"
+                  enctype="multipart/form-data"
+                  action=""
+                >
                   {{form.hidden_tag()}}
                   <div class="form-group row">
                     <div class="col-sm-12 mb-3 mb-sm-0">
-                      <input
+                      <!-- <input
                         type="text"
                         class="form-control form-control-user"
                         placeholder="Username"
-                        {%if
-                        form.username.error%}
-                        {{form.username(class="is-invalide"
-                        )}}
-                      />
-                      {%for error in form.username.errors%}
+                      /> -->
+                      {{ form.username (class="form-control form-control-user",
+                      placeholder="username")}} {%for error in
+                      form.username.errors%}
                       <span>{{error}}</span>
-                      {%endfor%} {% else %} {{form.username}} {%endif%}
+                      {%endfor%}
                     </div>
                   </div>
                   <div class="form-group row">
@@ -72,66 +75,78 @@
                       <p style="margin: 0">Enter your birthday:</p>
                     </div>
                     <div class="col-sm-8">
-                      <input
+                      <!-- <input
                         class="form-control form-control-user"
                         type="date"
                         id="birthday"
                         name="birthday"
-                      />
+                      /> -->
+                      {{form.birthdate (class="form-control
+                      form-control-user")}}
                     </div>
                   </div>
                   <div class="form-group">
-                    <input
+                    <!-- <input
                       type="email"
                       class="form-control form-control-user"
                       id="exampleInputEmail"
                       placeholder="Email Address"
-                      {%if
-                      form.email.error%}
-                      {{form.email(class="is-invalide"
-                      )}}
-                    />
-                    {%for error in form.email.errors%}
+                    /> -->
+                    {{ form.email (class="form-control form-control-user",
+                    placeholder="Email")}} {%for error in form.email.errors%}
                     <span>{{error}}</span>
-                    {%endfor%} {% else %} {{form.email}} {%endif%}
+                    {%endfor%}
                   </div>
                   <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                      <input
+                      <!-- <input
                         type="password"
                         class="form-control form-control-user"
                         id="exampleInputPassword"
                         placeholder="Password"
-                        {%if
-                        form.password.error%}
-                        {{form.password(class="is-invalide"
-                        )}}
-                      />
-                      {%for error in form.pasword.errors%}
+                      /> -->
+                      {{ form.password (class="form-control form-control-user",
+                      placeholder="Password")}} {%for error in
+                      form.password.errors%}
                       <span>{{error}}</span>
-                      {%endfor%} {% else %} {{form.password}} {%endif%}
+                      {%endfor%}
                     </div>
                     <div class="col-sm-6">
-                      <input
+                      <!-- <input
                         type="password"
                         class="form-control form-control-user"
                         id="exampleRepeatPassword"
                         placeholder="Repeat Password"
-                        {%if
-                        form.confirm_password.error%}
-                        {{form.confirm_password(class="is-invalide"
-                        )}}
-                      />
+                      /> -->
+                      {{ form.confirm_password (class="form-control
+                      form-control-user", placeholder="Confirm Password")}}
                       {%for error in form.confirm_password.errors%}
                       <span>{{error}}</span>
-                      {%endfor%} {% else %} {{form.confirm_password}} {%endif%}
+                      {%endfor%}
                     </div>
                   </div>
-                  <input
+                  <div class="form-group row">
+                    <div class="col-md-12">
+                      <!-- <input
+                        type="file"
+                        class="form-control form-control-user"
+                        style="padding: 1rem; height: inherit"
+                        name="photo"
+                      /> -->
+                      {{form.photo (class="form-control form-control-user",
+                      style="padding: 1rem; height: inherit",
+                      placeholder="Profile Photo")}} {%for error in
+                      form.photo.errors%}
+                      <span>{{error}}</span>
+                      {%endfor%}
+                    </div>
+                  </div>
+                  <!-- <input
                     type="submit"
                     class="btn btn-primary btn-user btn-block"
                     value="Create Account!"
-                  />
+                  /> -->
+                  {{ form.sign_up (class="btn btn-primary btn-user btn-block")}}
                 </form>
                 <hr />
                 <div class="text-center">
