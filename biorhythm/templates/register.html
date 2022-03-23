@@ -1,139 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-<head>
-
-    <meta charset="utf-8">
-    <meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Register</title>
+    <title>Biorhythm - Register</title>
 
     <!-- Custom fonts for this template-->
-    <link href="/static/vendor/fontawesome-free/css/all.min.css" 
-    rel="stylesheet" 
-    type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+      href="/static/vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
 
     <!-- Custom styles for this template-->
-    <link href="/static/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/static/css/sb-admin-2.min.css" rel="stylesheet" />
+  </head>
 
-</head>
-
-<body class="bg-gradient-primary">
-
+  <body class="bg-gradient-primary">
     <div class="container">
-
-        <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
-                <!-- Nested Row within Card Body -->
-                <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                    <div class="col-lg-7">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                            </div>
-                            <form class="user", method="POST", action="">
-                                {{form.hidden_tag()}}
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" placeholder="Username"
-                                        {%if form.username.error%}
-                                        {{form.username(class = "is-invalide")}}>
-                                        {%for error in form.username.errors%}
-                                        <span>{{error}}</span>
-                                        {%endfor%}
-                                        {% else %}
-                                        {{form.username}}
-                                        {%endif%}
-                                    </div>
-                                    <div class="col-sm-6">
-                                    <from actions ="" method= "get">
-                                        Enter birthdate:
-                                     <input type="date" id ="birthday" name = "birthday">
-                                    </from>
-                                </div>
-                            </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address"
-                                        {%if form.email.error%}
-                                        {{form.email(class = "is-invalide")}}>
-                                        {%for error in form.email.errors%}
-                                        <span>{{error}}</span>
-                                        {%endfor%}
-                                        {% else %}
-                                        {{form.email}}
-                                        {%endif%}
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password"
-                                            {%if form.password.error%}
-                                            {{form.password(class = "is-invalide")}}>
-                                            {%for error in form.pasword.errors%}
-                                            <span>{{error}}</span>
-                                            {%endfor%}
-                                            {% else %}
-                                            {{form.password}}
-                                            {%endif%}
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password"
-                                            {%if form.confirm_password.error%}
-                                            {{form.confirm_password(class = "is-invalide")}}>
-                                            {%for error in form.confirm_password.errors%}
-                                            <span>{{error}}</span>
-                                            {%endfor%}
-                                            {% else %}
-                                            {{form.confirm_password}}
-                                            {%endif%}
-                                    </div>
-                                </div>
-                                <a href="login.html">
-                                    {{form.sign_up(class="btn btn-primary btn-user btn-block")}}
-                                </a>
-                                <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a>
-                            </form>
-                            <hr>
-                            <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
-                            </div>
-                        </div>
-                    </div>
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+            <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+            <div class="col-lg-7">
+              <div class="p-5">
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4">
+                    Create a Biorhythm Account!
+                  </h1>
                 </div>
+                <form
+                  class="user"
+                  method="POST"
+                  enctype="multipart/form-data"
+                  action=""
+                >
+                  {{form.hidden_tag()}}
+                  <div class="form-group row">
+                    <div class="col-sm-12 mb-3 mb-sm-0">
+                      <!-- <input
+                        type="text"
+                        class="form-control form-control-user"
+                        placeholder="Username"
+                      /> -->
+                      {{ form.username (class="form-control form-control-user",
+                      placeholder="username")}} {%for error in
+                      form.username.errors%}
+                      <span>{{error}}</span>
+                      {%endfor%}
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div
+                      class="col-md-4"
+                      style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      "
+                    >
+                      <p style="margin: 0">Enter your birthday:</p>
+                    </div>
+                    <div class="col-sm-8">
+                      <!-- <input
+                        class="form-control form-control-user"
+                        type="date"
+                        id="birthday"
+                        name="birthday"
+                      /> -->
+                      {{form.birthdate (class="form-control
+                      form-control-user")}}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <!-- <input
+                      type="email"
+                      class="form-control form-control-user"
+                      id="exampleInputEmail"
+                      placeholder="Email Address"
+                    /> -->
+                    {{ form.email (class="form-control form-control-user",
+                    placeholder="Email")}} {%for error in form.email.errors%}
+                    <span>{{error}}</span>
+                    {%endfor%}
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <!-- <input
+                        type="password"
+                        class="form-control form-control-user"
+                        id="exampleInputPassword"
+                        placeholder="Password"
+                      /> -->
+                      {{ form.password (class="form-control form-control-user",
+                      placeholder="Password")}} {%for error in
+                      form.password.errors%}
+                      <span>{{error}}</span>
+                      {%endfor%}
+                    </div>
+                    <div class="col-sm-6">
+                      <!-- <input
+                        type="password"
+                        class="form-control form-control-user"
+                        id="exampleRepeatPassword"
+                        placeholder="Repeat Password"
+                      /> -->
+                      {{ form.confirm_password (class="form-control
+                      form-control-user", placeholder="Confirm Password")}}
+                      {%for error in form.confirm_password.errors%}
+                      <span>{{error}}</span>
+                      {%endfor%}
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-md-12">
+                      <!-- <input
+                        type="file"
+                        class="form-control form-control-user"
+                        style="padding: 1rem; height: inherit"
+                        name="photo"
+                      /> -->
+                      {{form.photo (class="form-control form-control-user",
+                      style="padding: 1rem; height: inherit",
+                      placeholder="Profile Photo")}} {%for error in
+                      form.photo.errors%}
+                      <span>{{error}}</span>
+                      {%endfor%}
+                    </div>
+                  </div>
+                  <!-- <input
+                    type="submit"
+                    class="btn btn-primary btn-user btn-block"
+                    value="Create Account!"
+                  /> -->
+                  {{ form.sign_up (class="btn btn-primary btn-user btn-block")}}
+                </form>
+                <hr />
+                <div class="text-center">
+                  <a class="small" href="forgot-password.html"
+                    >Forgot Password?</a
+                  >
+                </div>
+                <div class="text-center">
+                  <a class="small" href="login.html"
+                    >Already have an account? Login!</a
+                  >
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-
+      </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-</body>
-
+    <script src="/static/js/sb-admin-2.min.js"></script>
+  </body>
 </html>
