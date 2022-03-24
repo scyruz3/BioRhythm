@@ -1,9 +1,15 @@
 from crypt import methods
 from io import BytesIO
 from biorhythm import app
-from flask import session, send_file
+from flask import session, send_file, render_template
 from biorhythm.utils import getImageFromBinary
 from biorhythm.dao import userDAO
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template("404.html"), 404
 
 
 def serve_pil_image(pil_img):

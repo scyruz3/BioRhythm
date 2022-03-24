@@ -1,7 +1,5 @@
-from datetime import datetime
 from biorhythm import app
 from flask import redirect, render_template, request, session, url_for
-import biorhythm
 from biorhythm.manager import biorhythmManager, eventManager
 from biorhythm.services import validateDate
 from biorhythm.middleware.authMiddleware import protectedRoute
