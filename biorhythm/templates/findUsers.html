@@ -16,9 +16,11 @@
 
 <script type="text/javascript">
     function sendFriendRequest(friendID) {
-        data = { "userID": "622d0e529523a13ef2ad42f8", "friendID": friendID };
+        data = { "userID": {{current_user["userId"] | tojson}}
+        , "friendID": friendID };
 
-        console.log(`sending request from 622d0e529523a13ef2ad42f8 to ${friendID}`);
+        console.log(data)
+        
         $.ajax({
             type: 'post',
             url: '/friend-requests',
